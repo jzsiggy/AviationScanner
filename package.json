@@ -1,0 +1,16 @@
+{
+  "name": "aviation_analysis",
+  "version": "1.0.0",
+  "description": "Track Airline flight activity during COVID-19 crisis",
+  "main": "index.js",
+  "author": "Joao Zsigmond {[ jzsiggy ]}",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.9.4"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
