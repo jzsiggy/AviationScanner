@@ -45,6 +45,8 @@ const getFlights = () => {
   });
 }
 
+getFlights();
+
 setInterval(() => {
   getFlights();
 }, 1700000)
