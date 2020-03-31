@@ -4,6 +4,7 @@ const service = require('axios');
 const mongoose = require('mongoose');
 
 const { Status } = require('./models/Status');
+const { getNow } = require('./assets/getNow');
 
 mongoose.connect(`${process.env.MONGO_CONNECTION_STRING}`, {useNewUrlParser: true})
 .then(response => {
@@ -36,8 +37,7 @@ const getFlights = () => {
     };
 
   Status.create(status);
-
-  // console.log(status);
+  console.log(`Got Data @ ${getNow()}`);
 
   })  
   .catch(err => {
