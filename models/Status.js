@@ -9,7 +9,7 @@ const statusSchema = new Schema({
   flights : [{
     icao : String,
     lat : Number,
-    lon : Number,
+    long : Number,
     velocity : Number,
     direction : Number,
     origin_country : String,
