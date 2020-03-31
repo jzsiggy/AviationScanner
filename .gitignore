@@ -1,3 +1,4 @@
 .*
 !.gitignore
 node_modules
+avi_env

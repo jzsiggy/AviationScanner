@@ -1,0 +1,1 @@
+SELECT * FROM state_vectors_data4 WHERE time>=1583103600 AND time <=1583114400 AND lat IS NOT NULL AND MOD(time, 1800)=0  LIMIT 1000;
