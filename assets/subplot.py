@@ -11,7 +11,7 @@ if not os.path.exists("images_v3"):
 def get_date_time(ts):
 	return datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:--')
 
-def plot_subplots(timestamp , latitude , longitude, prev_graph, pan):
+def plot_subplots(timestamp , latitude , longitude, prev_graph):
 
 	prev_graph['time'].append(get_date_time(int(timestamp)))
 	prev_graph['quant'].append(len(latitude))
@@ -51,7 +51,7 @@ def plot_subplots(timestamp , latitude , longitude, prev_graph, pan):
 	fig.add_trace(
 			go.Scatter(
 					x=graph['time'],
-					y=graph['movingAvg'],	#Number of Aircrafts
+					y=graph['movingAvg'],
 					mode="lines",
 					name="Number of Aircrafts (moving avg)"
 			),

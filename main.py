@@ -30,5 +30,4 @@ for current in data:
     lat.append(item['lat'])
     lon.append(item['long'])
 
-  graph = plot_subplots(str(current['timestamp']), lat, lon, graph, pan=(image_counter*4) % 360)
-  # break
+  graph = plot_subplots(str(current['timestamp']), lat, lon, graph)
