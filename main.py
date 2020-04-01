@@ -5,8 +5,8 @@ import time
 sys.path.append('/Users/jz/Desktop/Dev/aviation_analysis/assets')
 from subplot import plot_subplots
 
-with open('data/flights.json') as f:
-  flights = json.load(f)
+with open('data/data.json') as f:
+  data = json.load(f)
 
 image_counter = 1
 
@@ -17,20 +17,18 @@ graph = {
 }
 
 # 1583843400
-for i in range(1584459000, 1585596601, 3600):
+for current in data:
 
-  current = [item for item in flights if item['time'] == str(i)]
-
-  print("[[[[[ Starting image {} ]]]]]".format(str(image_counter)))
-  print("[[[[[ {} items in batch ]]]]]".format(str(len(current))))
+  print("[[[[[ Starting image {} ]]]]]".format(str(current['timestamp'])))
+  print("[[[[[ {} items in batch ]]]]]".format(str(len(current['flights']))))
   image_counter+=1
   
   lat = []
   lon = []
 
-  for item in current:
+  for item in current['flights']:
     lat.append(item['lat'])
-    lon.append(item['lon'])
+    lon.append(item['long'])
 
-  graph = plot_subplots(str(i), lat, lon, graph, pan=(image_counter*4) % 360)
+  graph = plot_subplots(str(current['timestamp']), lat, lon, graph, pan=(image_counter*4) % 360)
   # break

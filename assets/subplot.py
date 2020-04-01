@@ -88,10 +88,10 @@ def plot_subplots(timestamp , latitude , longitude, prev_graph, pan):
 			]
 	)
 
-	# if len(graph['quant']) % 20 == 0:
-	# 	fig.show()
-	print('Writing Image')
-	time.sleep(2)
-	fig.write_image('images_v3/{}.png'.format(timestamp))
-	print('Done Writing')
+	if len(graph['quant']) % 20 == 0:
+		fig.show()
+	# print('Writing Image')
+	# time.sleep(2)
+	# fig.write_image('images_v3/{}.png'.format(timestamp))
+	# print('Done Writing')
 	return graph
