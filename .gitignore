@@ -2,3 +2,7 @@
 !.gitignore
 node_modules
 avi_env
+data
+images
+
+*__pycache__*
