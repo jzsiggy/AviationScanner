@@ -4,5 +4,6 @@ node_modules
 avi_env
 data
 images
-
+images_v2
+images_v3
 *__pycache__*
