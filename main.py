@@ -3,12 +3,19 @@ import json
 import time
 
 sys.path.append('/Users/jz/Desktop/Dev/aviation_analysis/assets')
-from plot import plot
+from subplot import plot_subplots
 
 with open('data/flights.json') as f:
   flights = json.load(f)
 
-image_counter = 174
+image_counter = 1
+
+graph = {
+  'time' : [],
+  'quant' : [],
+  'movingAvg' : [],
+}
+
 # 1583843400
 for i in range(1584459000, 1585596601, 3600):
 
@@ -25,5 +32,5 @@ for i in range(1584459000, 1585596601, 3600):
     lat.append(item['lat'])
     lon.append(item['lon'])
 
-  plot(str(i), lat, lon)
-  time.sleep(5)
+  graph = plot_subplots(str(i), lat, lon, graph, pan=(image_counter*4) % 360)
+  # break
