@@ -1,18 +1,19 @@
+import time
 import os
 from datetime import datetime
 import statistics
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-if not os.path.exists("images_v2"):
-    os.mkdir("images_v2")
+if not os.path.exists("images_v3"):
+    os.mkdir("images_v3")
 
 def get_date_time(ts):
 	return datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:--')
 
-def plot_subplots(time , latitude , longitude, prev_graph, pan):
+def plot_subplots(timestamp , latitude , longitude, prev_graph, pan):
 
-	prev_graph['time'].append(get_date_time(int(time)))
+	prev_graph['time'].append(get_date_time(int(timestamp)))
 	prev_graph['quant'].append(len(latitude))
 	if len(prev_graph['quant']) < 50:
 		prev_graph['movingAvg'].append(None)
@@ -33,7 +34,7 @@ def plot_subplots(time , latitude , longitude, prev_graph, pan):
 										mode="markers",
 										hoverinfo="text",
 										showlegend=False,
-										marker=dict(color="crimson", size=2, opacity=0.8)),
+										marker=dict(color="crimson", size=1, opacity=0.7)),
 			row=1, col=1
 	)
 
@@ -58,8 +59,9 @@ def plot_subplots(time , latitude , longitude, prev_graph, pan):
 	)
 
 	fig.update_geos(
-			projection_rotation=dict(lon=pan, lat=0, roll=0),
-			projection_type="orthographic",
+			# projection_rotation=dict(lon=pan),
+			# projection_type="orthographic",
+			projection_type="natural earth",
 			landcolor="white",
 			oceancolor="LightBlue",
 			showocean=True,
@@ -89,6 +91,7 @@ def plot_subplots(time , latitude , longitude, prev_graph, pan):
 	# if len(graph['quant']) % 20 == 0:
 	# 	fig.show()
 	print('Writing Image')
-	fig.write_image('images_v2/{}.png'.format(time))
+	time.sleep(2)
+	fig.write_image('images_v3/{}.png'.format(timestamp))
 	print('Done Writing')
 	return graph
